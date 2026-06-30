@@ -6,7 +6,7 @@ import { defineConfig, fontProviders } from 'astro/config';
 import tailwindcss from "@tailwindcss/vite"
 
 export default defineConfig({
-	site: 'http://localhost:4321/',
+	site: 'https://damet-page.pages.dev',
 	integrations: [mdx(), sitemap()],
 	vite: {
 		plugins: [tailwindcss()]
