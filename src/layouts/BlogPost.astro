@@ -18,9 +18,10 @@ const { title, description, pubDate, updatedDate, heroImage, slug } = Astro.prop
 		<ClientRouter />
 		<style>
 			main {
-				width: calc(100% - 2em);
-				max-width: 100%;
-				margin: 0;
+				width: 1024px;
+				max-width: calc(100% - 2em);
+				margin: auto;
+				padding: 3em 1em;
 			}
 			.hero-image {
 				width: 100%;
@@ -32,7 +33,7 @@ const { title, description, pubDate, updatedDate, heroImage, slug } = Astro.prop
 				box-shadow: var(--box-shadow);
 			}
 			.prose {
-				width: 720px;
+				width: 860px;
 				max-width: calc(100% - 2em);
 				margin: auto;
 				padding: 1em;
@@ -140,26 +141,32 @@ const { title, description, pubDate, updatedDate, heroImage, slug } = Astro.prop
 				max-width: 100%;
 				border-radius: 10px;
 				border: 1px solid rgba(74, 222, 128, 0.1);
-				margin: 1.5em 0;
+				margin: 1.5em auto;
+				display: block;
 			}
 			.prose table {
 				width: 100%;
 				border-collapse: collapse;
-				margin: 1.5em 0;
+				margin: 2em 0;
 				color: #86efac;
+				border: 1px solid #4ade80;
 			}
 			.prose th, .prose td {
-				border: 1px solid rgba(74, 222, 128, 0.15);
-				padding: 0.6em 1em;
+				border: 1px solid rgba(74, 222, 128, 0.5);
+				padding: 0.8em 1.2em;
 				text-align: left;
 			}
 			.prose th {
-				background: rgba(74, 222, 128, 0.06);
+				background: rgba(74, 222, 128, 0.15);
 				color: #4ade80;
-				font-weight: 600;
+				font-weight: 700;
+				border-bottom-width: 2px;
 			}
 			.prose tr:nth-child(even) {
-				background: rgba(74, 222, 128, 0.02);
+				background: rgba(74, 222, 128, 0.06);
+			}
+			.prose table thead {
+				border-bottom: 2px solid #4ade80;
 			}
 		</style>
 	</head>
