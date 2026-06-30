@@ -1,0 +1,45 @@
+---
+import '../styles/global.css';
+import StatusTerminal from '../components/StatusTerminal.astro';
+import TerminalButton from '../components/TerminalButton.astro';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Daniel Mercado — github-readme</title>
+	</head>
+	<body class="flex min-h-screen items-center justify-center bg-black p-6">
+		<main class="w-full max-w-2xl p-0">
+			<div class="space-y-6">
+				<p class="font-mono text-sm text-green-400/60">
+					<span class="text-green-400">$</span> cat README.md
+				</p>
+
+				<h1 class="font-mono text-3xl font-semibold leading-tight text-green-300 sm:text-4xl">
+					<span class="text-green-400/50">></span> Daniel Mercado
+				</h1>
+
+				<p class="font-mono text-base leading-relaxed text-green-400/70">
+					<strong class="text-green-300">Software Developer</strong> de Bogotá, Colombia 🇨🇴.
+					Especializado en <strong class="text-green-300">.NET (C#)</strong>,
+					<strong class="text-green-300">Node.js</strong> y arquitecturas <strong class="text-green-300">AWS</strong>.
+				</p>
+
+				<StatusTerminal />
+
+				<div class="flex flex-wrap gap-3 pt-2">
+					<TerminalButton href="https://github.com/damet24" external>github</TerminalButton>
+					<TerminalButton href="mailto:daniel.mercado.dev@gmail.com" external>email</TerminalButton>
+					<TerminalButton href="https://linkedin.com/in/Damet24" external>linkedin</TerminalButton>
+				</div>
+
+				<p class="font-mono text-xs text-green-400/40 pt-4 border-t border-green-500/10">
+					<span class="text-green-400/50">$</span> cat /home/daniel/README.md | expires: never
+				</p>
+			</div>
+		</main>
+	</body>
+</html>

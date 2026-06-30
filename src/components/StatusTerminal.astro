@@ -1,0 +1,33 @@
+---
+const lines = [
+	{ cmd: 'whoami', output: 'daniel — hacker in progress, builder of things.' },
+	{ cmd: 'current_focus', output: 'low-level systems, web security, y.k.' },
+	{ cmd: 'uptime', output: 'coding since 2020 • still breaking stuff.' },
+	// { cmd: 'shell', output: 'zsh with too many themes • fish is better.' },
+];
+---
+
+<div class="w-full rounded-xl border border-green-500/25 bg-black/60 font-mono text-sm shadow-lg shadow-green-500/5">
+	<div class="flex items-center justify-between rounded-t-xl border-b border-green-500/20 bg-green-500/5 px-4 py-2">
+		<div class="flex items-center gap-2">
+			<span class="h-2.5 w-2.5 rounded-full bg-green-500/30"></span>
+			<span class="h-2.5 w-2.5 rounded-full bg-green-500/20"></span>
+			<span class="h-2.5 w-2.5 rounded-full bg-green-500/20"></span>
+		</div>
+		<span class="text-green-400/40 text-xs">/home/daniel/status.log</span>
+		<span class="text-green-400/60 text-xs">online</span>
+	</div>
+	<div class="space-y-3 p-4">
+		{
+			lines.map((line) => (
+				<div>
+					<div class="flex items-center gap-2">
+						<span class="text-green-400/50">$</span>
+						<span class="text-green-300">{line.cmd}</span>
+					</div>
+					<p class="mt-0.5 pl-5 text-green-400/70">> {line.output}</p>
+				</div>
+			))
+		}
+	</div>
+</div>

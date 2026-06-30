@@ -1,63 +1,88 @@
 ---
-import AboutHeroImage from '../assets/blog-placeholder-about.jpg';
-import Layout from '../layouts/BlogPost.astro';
+import MainLayout from '../layouts/MainLayout.astro';
+import TerminalButton from '../components/TerminalButton.astro';
+import ExperienceItem from '../components/ExperienceItem.astro';
+import { AUTHOR, SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+
+const EXPERIENCE = [
+	{
+		date: 'Jul. 2023 - Ago. 2024 · 1 año y 2 meses',
+		title: 'Software Developer',
+		company: 'Masivian',
+		description:
+			'Desarrollé soluciones de backend con .NET y AWS, proporcionando soporte y resolviendo bugs para un sistema de envío de correos masivo, utilizando diversas bases de datos como Redis, MongoDB, DynamoDB y Redshift, para asegurar la disponibilidad y escalabilidad del sistema.',
+		link: 'https://www.linkedin.com/company/masivian/mycompany/',
+	},
+	{
+		date: 'Jul. 2021 - Nov. 2022 · 1 año 5 meses',
+		title: 'Fullstack Web Developer',
+		company: 'Colombian Teknologies SAS',
+		description:
+			'Desarrollé aplicaciones a medida para diversos clientes, manejando tanto el desarrollo backend como frontend. Utilicé una variedad de tecnologías, incluyendo React, PHP y JavaScript, adaptándome a las necesidades específicas de cada proyecto, para garantizar una experiencia de usuario óptima y soluciones escalables.',
+		link: 'https://www.linkedin.com/in/damet24/',
+	},
+];
 ---
 
-<Layout
-	title="About Me"
-	description="Lorem ipsum dolor sit amet"
-	pubDate={new Date('August 08 2021')}
-	heroImage={AboutHeroImage}
->
-	<p>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-		labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo
-		viverra. Adipiscing enim eu turpis egestas pretium. Euismod elementum nisi quis eleifend quam
-		adipiscing. In hac habitasse platea dictumst vestibulum. Sagittis purus sit amet volutpat. Netus
-		et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus
-		vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque
-		sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit amet.
+<MainLayout title={`${SITE_TITLE} — about`} description={SITE_DESCRIPTION}>
+
+<section>
+	<p class="font-mono text-sm text-green-400/60">
+		<span class="text-green-400">$</span> cat /home/{AUTHOR.toLowerCase().replace(' ', '-')}/README.md
 	</p>
 
-	<p>
-		Morbi tristique senectus et netus. Id semper risus in hendrerit gravida rutrum quisque non
-		tellus. Habitasse platea dictumst quisque sagittis purus sit amet. Tellus molestie nunc non
-		blandit massa. Cursus vitae congue mauris rhoncus. Accumsan tortor posuere ac ut. Fringilla urna
-		porttitor rhoncus dolor. Elit ullamcorper dignissim cras tincidunt lobortis. In cursus turpis
-		massa tincidunt dui ut ornare lectus. Integer feugiat scelerisque varius morbi enim nunc.
-		Bibendum neque egestas congue quisque egestas diam. Cras ornare arcu dui vivamus arcu felis
-		bibendum. Dignissim suspendisse in est ante in nibh mauris. Sed tempus urna et pharetra pharetra
-		massa massa ultricies mi.
+	<h1 class="font-mono text-2xl font-semibold text-green-300 sm:text-3xl md:text-4xl">
+		<span class="text-green-400/50">></span> sobre mí
+	</h1>
+
+	<div class="mt-8 flex flex-col gap-8 md:flex-row md:gap-12">
+		<div class="space-y-5 font-mono text-base leading-relaxed text-green-400/70 flex-1">
+			<p>
+				<strong class="text-green-300">Software Developer</strong> de Bogotá, Colombia 🇨🇴.
+				Especializado en soluciones escalables con <strong class="text-green-300">.NET (C#)</strong> y <strong class="text-green-300">Node.js</strong>. Con experiencia en arquitecturas <strong class="text-green-300">AWS</strong>, principios <strong class="text-green-300">SOLID</strong> y desarrollo de sistemas de alto rendimiento.
+			</p>
+
+			<p>
+				Inicié mi camino como <strong class="text-green-300">autodidacta en programación</strong> desde la escuela. Tras un año explorando la música, comencé mi trayectoria como desarrollador de software profesionalmente.
+			</p>
+
+			<p>
+				Actualmente curso la carrera de <strong class="text-green-300">Ingeniería Informática</strong>, combinando mi formación académica con la experiencia práctica para seguir fortaleciendo mis habilidades en el desarrollo de soluciones modernas, seguras y de alta calidad.
+			</p>
+
+			<p>
+				Este blog es mi cuaderno de bitácora. Aquí voy a dejar notas técnicas, writeups de máquinas, configuraciones, y cualquier cosa que valga la pena recordar.
+			</p>
+		</div>
+
+		<img
+			src="/me.webp"
+			alt="Daniel Mercado"
+			class="size-48 shrink-0 rounded-2xl border border-green-500/30 object-cover shadow-lg shadow-green-500/5 md:size-56"
+		/>
+	</div>
+
+	<div class="mt-8 flex flex-wrap gap-3">
+		<TerminalButton href="https://github.com/damet24" external>github</TerminalButton>
+		<TerminalButton href="mailto:daniel.mercado.dev@gmail.com" external>email</TerminalButton>
+		<TerminalButton href="https://linkedin.com/in/Damet24" external>linkedin</TerminalButton>
+	</div>
+</section>
+
+<section class="mt-16 border-t border-green-500/10 pt-12">
+	<p class="font-mono text-sm text-green-400/60">
+		<span class="text-green-400">$</span> cat /var/log/syslog | grep "experience"
 	</p>
 
-	<p>
-		Mollis nunc sed id semper risus in. Convallis a cras semper auctor neque. Diam sit amet nisl
-		suscipit. Lacus viverra vitae congue eu consequat ac felis donec. Egestas integer eget aliquet
-		nibh praesent tristique magna sit amet. Eget magna fermentum iaculis eu non diam. In vitae
-		turpis massa sed elementum. Tristique et egestas quis ipsum suspendisse ultrices. Eget lorem
-		dolor sed viverra ipsum. Vel turpis nunc eget lorem dolor sed viverra. Posuere ac ut consequat
-		semper viverra nam. Laoreet suspendisse interdum consectetur libero id faucibus. Diam phasellus
-		vestibulum lorem sed risus ultricies tristique. Rhoncus dolor purus non enim praesent elementum
-		facilisis. Ultrices tincidunt arcu non sodales neque. Tempus egestas sed sed risus pretium quam
-		vulputate. Viverra suspendisse potenti nullam ac tortor vitae purus faucibus ornare. Fringilla
-		urna porttitor rhoncus dolor purus non. Amet dictum sit amet justo donec enim.
-	</p>
+	<h2 class="mt-1 font-mono text-xl font-semibold text-green-300 sm:text-2xl">
+		<span class="text-green-400/50">></span> experiencia
+	</h2>
 
-	<p>
-		Mattis ullamcorper velit sed ullamcorper morbi tincidunt. Tortor posuere ac ut consequat semper
-		viverra. Tellus mauris a diam maecenas sed enim ut sem viverra. Venenatis urna cursus eget nunc
-		scelerisque viverra mauris in. Arcu ac tortor dignissim convallis aenean et tortor at. Curabitur
-		gravida arcu ac tortor dignissim convallis aenean et tortor. Egestas tellus rutrum tellus
-		pellentesque eu. Fusce ut placerat orci nulla pellentesque dignissim enim sit amet. Ut enim
-		blandit volutpat maecenas volutpat blandit aliquam etiam. Id donec ultrices tincidunt arcu. Id
-		cursus metus aliquam eleifend mi.
-	</p>
+	<ol class="mt-8 flex flex-col gap-4 list-none">
+		{EXPERIENCE.map((exp) => (
+			<li class="list-none"><ExperienceItem {...exp} /></li>
+		))}
+	</ol>
+</section>
 
-	<p>
-		Tempus quam pellentesque nec nam aliquam sem. Risus at ultrices mi tempus imperdiet. Id porta
-		nibh venenatis cras sed felis eget velit. Ipsum a arcu cursus vitae. Facilisis magna etiam
-		tempor orci eu lobortis elementum. Tincidunt dui ut ornare lectus sit. Quisque non tellus orci
-		ac. Blandit libero volutpat sed cras. Nec tincidunt praesent semper feugiat nibh sed pulvinar
-		proin gravida. Egestas integer eget aliquet nibh praesent tristique magna.
-	</p>
-</Layout>
+</MainLayout>

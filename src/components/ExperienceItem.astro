@@ -1,0 +1,24 @@
+---
+interface Props {
+	date: string;
+	title: string;
+	company: string;
+	description: string;
+	link: string;
+}
+
+const { date, title, company, description, link } = Astro.props;
+---
+
+<article>
+	<div class="flex items-baseline gap-2">
+		<span class="font-mono text-xs text-green-400/50">{date}</span>
+	</div>
+	<h3 class="mt-1 font-mono text-base font-semibold text-green-300">
+		{title}
+		<a href={link} target="_blank" rel="noopener" class="text-green-400/50 hover:text-green-400 transition-colors"> @ {company}</a>
+	</h3>
+	<p class="mt-2 font-mono text-sm leading-relaxed text-green-400/70">
+		{description}
+	</p>
+</article>

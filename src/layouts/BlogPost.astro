@@ -1,19 +1,21 @@
 ---
 import { Image } from 'astro:assets';
+import { ClientRouter } from 'astro:transitions';
 import type { CollectionEntry } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
 
-type Props = CollectionEntry<'blog'>['data'];
+type Props = CollectionEntry<'blog'>['data'] & { slug: string };
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, slug } = Astro.props;
 ---
 
 <html lang="en">
 	<head>
 		<BaseHead title={title} description={description} />
+		<ClientRouter />
 		<style>
 			main {
 				width: calc(100% - 2em);
@@ -34,7 +36,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 				max-width: calc(100% - 2em);
 				margin: auto;
 				padding: 1em;
-				color: rgb(var(--gray-dark));
+				color: #86efac;
 			}
 			.title {
 				margin-bottom: 1em;
@@ -44,13 +46,120 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 			}
 			.title h1 {
 				margin: 0 0 0.5em 0;
+				color: #4ade80;
 			}
 			.date {
 				margin-bottom: 0.5em;
-				color: rgb(var(--gray));
+				color: #4ade80;
 			}
 			.last-updated-on {
 				font-style: italic;
+			}
+			.prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
+				color: #4ade80;
+				font-family: var(--font-martian-mono), monospace;
+			}
+			.prose h1 { font-size: 2.5em; margin-top: 2em; margin-bottom: 0.5em; }
+			.prose h2 { font-size: 1.8em; margin-top: 1.8em; margin-bottom: 0.5em; border-bottom: 1px solid rgba(34, 197, 94, 0.15); padding-bottom: 0.3em; }
+			.prose h3 { font-size: 1.4em; margin-top: 1.5em; margin-bottom: 0.5em; }
+			.prose h4 { font-size: 1.15em; margin-top: 1.2em; margin-bottom: 0.3em; }
+			.prose p {
+				margin-bottom: 1.2em;
+				line-height: 1.8;
+				color: #86efac;
+			}
+			.prose a {
+				color: #4ade80;
+				text-decoration: underline;
+				text-decoration-color: rgba(74, 222, 128, 0.3);
+				text-underline-offset: 3px;
+				transition: text-decoration-color 0.2s;
+			}
+			.prose a:hover {
+				text-decoration-color: #4ade80;
+			}
+			.prose strong, .prose b {
+				color: #4ade80;
+				font-weight: 700;
+			}
+			.prose em {
+				color: #bbf7d0;
+			}
+			.prose blockquote {
+				border-left: 3px solid #4ade80;
+				margin: 1.5em 0;
+				padding: 0.8em 1.2em;
+				background: rgba(74, 222, 128, 0.04);
+				border-radius: 0 8px 8px 0;
+				color: #86efac;
+			}
+			.prose blockquote p {
+				margin-bottom: 0;
+			}
+			.prose code {
+				font-family: var(--font-martian-mono), monospace;
+				font-size: 0.88em;
+				background: rgba(74, 222, 128, 0.08);
+				padding: 0.2em 0.4em;
+				border-radius: 4px;
+				color: #bbf7d0;
+			}
+			.prose pre {
+				background: #0a0a0a;
+				border: 1px solid rgba(74, 222, 128, 0.15);
+				border-radius: 10px;
+				padding: 1.2em 1.4em;
+				overflow-x: auto;
+				margin: 1.5em 0;
+			}
+			.prose pre code {
+				background: none;
+				padding: 0;
+				border-radius: 0;
+				color: #86efac;
+				font-size: 0.82em;
+				line-height: 1.6;
+			}
+			.prose ul, .prose ol {
+				padding-left: 1.5em;
+				margin: 1em 0;
+				color: #86efac;
+			}
+			.prose li {
+				margin-bottom: 0.4em;
+			}
+			.prose li::marker {
+				color: #4ade80;
+			}
+			.prose hr {
+				border: none;
+				border-top: 1px solid rgba(74, 222, 128, 0.15);
+				margin: 2em 0;
+			}
+			.prose img {
+				max-width: 100%;
+				border-radius: 10px;
+				border: 1px solid rgba(74, 222, 128, 0.1);
+				margin: 1.5em 0;
+			}
+			.prose table {
+				width: 100%;
+				border-collapse: collapse;
+				margin: 1.5em 0;
+				color: #86efac;
+			}
+			.prose th, .prose td {
+				border: 1px solid rgba(74, 222, 128, 0.15);
+				padding: 0.6em 1em;
+				text-align: left;
+			}
+			.prose th {
+				background: rgba(74, 222, 128, 0.06);
+				color: #4ade80;
+				font-weight: 600;
+			}
+			.prose tr:nth-child(even) {
+				background: rgba(74, 222, 128, 0.02);
 			}
 		</style>
 	</head>
@@ -74,7 +183,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 								)
 							}
 						</div>
-						<h1>{title}</h1>
+						<h1 transition:name={`post-${slug}`}>{title}</h1>
 						<hr />
 					</div>
 					<slot />
